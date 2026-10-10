@@ -1,4 +1,6 @@
 import StatCard from "@/components/StatCard";
+import JobCard from "@/components/JobCard";
+import { jobs } from "@/data/Jobs";
 
 export default function Home() {
   return (
@@ -26,10 +28,21 @@ export default function Home() {
           <StatCard title="Interviews" value={0} />
         </section>
 
-        <section className="mt-10 rounded-xl border border-zinc-800 bg-zinc-900 p-6">
-          <h2 className="text-xl font-semibold">Recent Opportunities</h2>
+        <section className="mt-10">
+          <div className="mb-4">
+            <h2 className="text-xl font-semibold">Recent Opportunities</h2>
 
-          <p className="mt-4 text-zinc-500">No jobs added yet.</p>
+            <p className="mt-1 text-sm text-zinc-500">
+              Jobs currently being tracked by LaunchPath.
+            </p>
+          </div>
+
+          {/* Render one JobCard for every job in our sample jobs array. */}
+          <div className="space-y-4">
+            {jobs.map((job) => (
+              <JobCard key={job.id} job={job} />
+            ))}
+          </div>
         </section>
       </div>
     </main>
