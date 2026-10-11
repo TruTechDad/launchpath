@@ -3,6 +3,21 @@ import JobCard from "@/components/JobCard";
 import { jobs } from "@/data/Jobs";
 
 export default function Home() {
+  // Dashboard metrics are derived from the jobs array instead of being
+  // manually hardcoded. As job data changes, these values update automatically.
+  const savedJobs = jobs.filter((job) => job.status === "Saved").length;
+
+  const highMatches = jobs.filter((job) => job.matchScore >= 85).length;
+
+  const applications = jobs.filter(
+    (job) =>
+      job.status === "Applied" ||
+      job.status === "Interview" ||
+      job.status === "Rejected",
+  ).length;
+
+  const interviews = jobs.filter((job) => job.status === "Interview").length;
+
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
       <div className="mx-auto max-w-6xl px-6 py-12">
@@ -22,10 +37,10 @@ export default function Home() {
         </header>
 
         <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <StatCard title="Saved Jobs" value={0} />
-          <StatCard title="High Matches" value={0} />
-          <StatCard title="Applications" value={0} />
-          <StatCard title="Interviews" value={0} />
+          <StatCard title="Saved Jobs" value={savedJobs} />
+          <StatCard title="High Matches" value={highMatches} />
+          <StatCard title="Applications" value={applications} />
+          <StatCard title="Interviews" value={interviews} />
         </section>
 
         <section className="mt-10">

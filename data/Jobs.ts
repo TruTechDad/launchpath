@@ -27,4 +27,12 @@ export const jobs: Job[] = [
     matchScore: 82,
     status: "Interview",
   },
+  {
+    id: 4,
+    title: "Junior Software Engineer",
+    company: "Example Corp",
+    location: "Charlotte, NC",
+    matchScore: 94,
+    status: "Saved",
+  },
 ];
